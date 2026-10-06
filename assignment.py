@@ -12,18 +12,15 @@ def read_names(filename):
     with open(filename, "r") as file:
         for line in file:
             cleaned = line.strip()
-            if cleaned:  # Skip blank lines
+            if cleaned:
                 names.append(cleaned)
     return names
 
 
 # Exercise 3
 def append_entry(filename, text):
-    # Step 1: Open in append mode to add the new line
     with open(filename, "a") as file:
         file.write(f"{text}\n")
-
-    # Step 2: Open in read mode to count total lines
     with open(filename, "r") as file:
         return len(file.readlines())
 
@@ -41,11 +38,8 @@ def search_file(filename, word):
 
 # Exercise 5
 def number_the_lines(source, destination):
-    # Read everything from source first
     with open(source, "r") as src_file:
         lines = src_file.readlines()
-
-    # Write numbered lines to destination
     with open(destination, "w") as dest_file:
         for i, line in enumerate(lines, start=1):
             dest_file.write(f"{i}: {line.rstrip('\r\n')}\n")
